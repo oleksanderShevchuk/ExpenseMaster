@@ -30,7 +30,7 @@ namespace ExpenseMaster.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ExpenseDto>> Get(int id)
+        public async Task<ActionResult<ExpenseDto>> Get(Guid id)
         {
             var expense = await _context.Expenses.FindAsync(id);
             if (expense == null) return NotFound();
@@ -47,7 +47,7 @@ namespace ExpenseMaster.Server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, CreateExpenseDto dto)
+        public async Task<IActionResult> Update(Guid id, CreateExpenseDto dto)
         {
             var expense = await _context.Expenses.FindAsync(id);
             if (expense == null) return NotFound();
@@ -58,7 +58,7 @@ namespace ExpenseMaster.Server.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var expense = await _context.Expenses.FindAsync(id);
             if (expense == null) return NotFound();
