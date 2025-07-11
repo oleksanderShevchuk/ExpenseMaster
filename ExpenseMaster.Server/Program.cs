@@ -1,3 +1,7 @@
+using ExpenseMaster.Server.Data;
+using ExpenseMaster.Server.Profiles;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddAutoMapper(typeof(ExpenseProfile));
+// builder.Services.AddAutoMapper(typeof(ExpenseProfile).Assembly);
 
 var app = builder.Build();
 
