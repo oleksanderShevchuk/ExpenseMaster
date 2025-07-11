@@ -1,0 +1,26 @@
+<h2>📊 Expense List</h2>
+
+<div *ngIf="isLoading">Loading...</div>
+
+<table *ngIf="!isLoading && expenses.length > 0" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let expense of expenses">
+            <td>{{ expense.title }}</td>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.amount | currency:'USD' }}</td>
+            <td>{{ expense.date | date:'shortDate' }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!isLoading && expenses.length === 0">
+    🔔 No expenses found.
+</div>

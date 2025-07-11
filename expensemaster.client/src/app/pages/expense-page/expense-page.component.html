@@ -1,0 +1,9 @@
+<div class="container mt-4">
+    <h2 class="mb-3">📋 My Expenses</h2>
+
+    <app-expense-form (expenseCreated)="refreshExpenses()"></app-expense-form>
+
+    <hr class="my-4" />
+
+    <app-expense-list #expenseList></app-expense-list>
+</div>

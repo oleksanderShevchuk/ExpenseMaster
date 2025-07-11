@@ -1,0 +1,30 @@
+<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()" class="border p-4 rounded shadow-sm bg-light">
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input class="form-control" formControlName="title" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Amount</label>
+        <input type="number" class="form-control" formControlName="amount" required min="0.01" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-control" formControlName="date" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <input class="form-control" formControlName="category" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" formControlName="description"></textarea>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="isSubmitting || expenseForm.invalid">
+        {{ isSubmitting ? 'Saving...' : 'Add Expense' }}
+    </button>
+</form>
